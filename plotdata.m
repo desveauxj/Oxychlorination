@@ -2,7 +2,7 @@ function null = plotdata(v, y, conv)
 % Figure 1 -- Flowrate vs Reactor Vol
 figure(1)
 %y-axis left
-plot(v,y(:,1).*1000,'b-',v,y(:,8).*1000,'y-',v,y(:,3).*1000,'m-',v,y(:,4).*1000,'c-',v,y(:,5).*1000,'r-',v,y(:,6).*1000,'g-',v,y(:,7).*1000,'k-')
+plot(v,y(:,1),'b-',v,y(:,8),'y-',v,y(:,3),'m-',v,y(:,4),'c-',v,y(:,5),'r-',v,y(:,6),'g-',v,y(:,7),'k-')
 ylabel('Molar Flowrate - mol/hr')
 %y-axis right
 grid

@@ -92,9 +92,9 @@ end
 outvar(9) = (-term1 - term2) / term3; % units of K/m^3
 
 % Ergun differetial equation
-% rho = rho0 * (P/P0) * (Ftotal_0/Ftotal) * (T0/T); % units of kg/m^3
-% outvar(10) = Beta * (1/(Ac*rho)); % units of kPa/m^3
-outvar(10) = -1000;
+rho = rho0 * (P/P0) * (Ftotal_0/Ftotal) * (T0/T); % units of kg/m^3
+outvar(10) = Beta * (1/(Ac*rho)); % units of kPa/m^3
+
 
 % Shell side differential equations
 outvar(11) = -(4 * U * (T - Tc)) / (flowC * Cpc * Do); % units of K/m^3
