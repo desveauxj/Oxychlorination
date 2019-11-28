@@ -1,4 +1,4 @@
-function outvar = handler(v,y,phi,H_tot,Cp_tot,L,D,Beta,Dp,Ac,N,U,flowC,Ftotal_0,T0,P0,rho0,dv)
+function outvar = handler(v,y,phi,H_tot,Cp_tot,L,D,Beta,Ac,U,flowC,Ftotal_0,T0,P0,rho0)
 %Species indices key:
     % 1 = c2h4
     % 2 = hcl
@@ -93,7 +93,7 @@ outvar(9) = (-term1 - term2) / term3; % units of K/m^3
 
 % Ergun differetial equation
 rho = rho0 * (P/P0) * (Ftotal_0/Ftotal) * (T0/T); % units of kg/m^3
-outvar(10) = Beta * (1/(Ac*rho)); % units of kPa/m^3
+outvar(10) = -Beta * (1/(Ac*rho)); % units of kPa/m^3
 
 
 % Shell side differential equations
