@@ -31,9 +31,9 @@ sumCp = sum(Cp_tot);
 
 %Main Properties, note that some of these values were taken from Aspen HYSYS
 T0 = 470; % units of K
-P0 = 1500; % units of kPa
-D = 0.0245; % units of m; diameter of tube
-L = 5.5;  % units of m
+P0 = 1010; % units of kPa
+D = 0.05; % units of m; diameter of tube
+L =8;  % units of m
 N = 1100; % number of tubes
 Ac = (pi*((D^2)/4)); % units of m^2
 phi = 0.4; % represents the void fraction
@@ -44,17 +44,17 @@ V_r = (pi*((D^2)/4))*L; % units of m^3
 
 %Coolant Properties
 U = 0.3; % units of kJ/(m^2*K*s)
-Tc0 =410; % units of K, boiling point is 530 K
-flowC = 3010/3600; % units of kg/s
+Tc0 =380; % units of K, boiling point is 530 K
+flowC = 2100/3600; % units of kg/s
 
 
 %Initial molar flowrates from starting material balance
  % units of mol/s
-F1_0 = 10/3600; % 1 = c2h4
-F2_0 = 100/3600; % 2 = hcl
-F3_0 = 10/3600; % 3 = o2
+F1_0 = 1300/3600; % 1 = c2h4
+F2_0 = 900/3600; % 2 = hcl
+F3_0 = 1000/3600; % 3 = o2
 F4_0 = 0/3600; % 4 = 1,1,2-trichloroethane
-F5_0 = 0/3600; % 5 = co2
+F5_0 = 200/3600; % 5 = co2
 F6_0 = 0.1/3600; % 6 = cl2
 F7_0 = 0/3600; % 7 = 1,2-dichloroethane
 F8_0 = 1/3600; % 8 = h2o
