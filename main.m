@@ -7,7 +7,7 @@ clear
     % 4 = 1,1,2-trichloroethane
     % 5 = co2
     % 6 = cl2
-    % 7 = 1,2-dichloroethane
+    % 7 = 1,2-dichloroethan
     % 8 = h2o
     
 %Heats of Reaction and Cp values at 533K
