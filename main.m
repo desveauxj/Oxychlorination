@@ -78,6 +78,6 @@ for i = 1:numElements
     conv(i) = (1-ysoln(i,1)/ysoln(1,1));
 end
 disp(conv(numElements))
-
+Ntubes = 13.88/ysoln(7)%13.88mol/s is the 1,2-dichloroethane production rate from Aspen simulation 
 %disp('Final Conversion: '+ num2str(conv(numElements)))
 plotdata(v, ysoln, conv);
