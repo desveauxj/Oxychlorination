@@ -7,7 +7,7 @@ clear
     % 4 = 1,1,2-trichloroethane
     % 5 = co2
     % 6 = cl2
-    % 7 = 1,2-dichloroethan
+    % 7 = 1,2-dichloroethane
     % 8 = h2o
     
 %Heats of Reaction and Cp values at 533K
@@ -30,10 +30,10 @@ sumCp = sum(Cp_tot);
  
 
 %Main Properties, note that some of these values were taken from Aspen HYSYS
-T0 = 470; % units of K
-P0 = 1500; % units of kPa
-D = 0.0245; % units of m; diameter of tube
-L = 5.5;  % units of m
+T0 = 500; % units of K
+P0 = 1000; % units of kPa
+D = 0.05; % units of m; diameter of tube
+L =9;  % units of m
 N = 1100; % number of tubes
 Ac = (pi*((D^2)/4)); % units of m^2
 phi = 0.4; % represents the void fraction
@@ -44,18 +44,18 @@ V_r = (pi*((D^2)/4))*L; % units of m^3
 
 %Coolant Properties
 U = 0.3; % units of kJ/(m^2*K*s)
-Tc0 =410; % units of K, boiling point is 530 K
-flowC = 3010/3600; % units of kg/s
+Tc0 = 400; % units of K, boiling point is 530 K
+flowC = 2000/3600; % units of kg/s
 
 
 %Initial molar flowrates from starting material balance
  % units of mol/s
-F1_0 = 10/3600; % 1 = c2h4
-F2_0 = 100/3600; % 2 = hcl
-F3_0 = 10/3600; % 3 = o2
+F1_0 = 70/3600; % 1 = c2h4
+F2_0 = 180/3600; % 2 = hcl
+F3_0 = 60/3600; % 3 = o2
 F4_0 = 0/3600; % 4 = 1,1,2-trichloroethane
 F5_0 = 0/3600; % 5 = co2
-F6_0 = 0.1/3600; % 6 = cl2
+F6_0 = 0.009/3600; % 6 = cl2
 F7_0 = 0/3600; % 7 = 1,2-dichloroethane
 F8_0 = 1/3600; % 8 = h2o
 F = [F1_0 F2_0 F3_0 F4_0 F5_0 F6_0 F7_0 F8_0];     
@@ -67,7 +67,7 @@ G = sum(MW.*F)/Ac; % units of kg/(m^2 * s)
 Beta = (((G/(Dp)) * ((1-phi)/(phi^3))) * (((150*(1-phi)*mu)/Dp) + (1.75*G)))/1000; % units of kPa*kg/(m^4)
 
 %Logic
-numElements = 1000; % number of solver iterations
+numElements = 100; % number of solver iterations
 dv = V_r/numElements;
 vspan = linspace(0, V_r, numElements);
 y0 = [F1_0 F2_0 F3_0 F4_0 F5_0 F6_0 F7_0 F8_0 T0 P0 Tc0]; % load dependent variables
@@ -80,4 +80,5 @@ end
 disp(conv(numElements))
 Ntubes = 13.88/ysoln(7)%13.88mol/s is the 1,2-dichloroethane production rate from Aspen simulation 
 %disp('Final Conversion: '+ num2str(conv(numElements)))
+ysoln(100,7)/(ysoln(100,4)+ysoln(100,7))
 plotdata(v, ysoln, conv);
