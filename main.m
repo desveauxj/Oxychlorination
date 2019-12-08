@@ -30,10 +30,10 @@ sumCp = sum(Cp_tot);
  
 
 %Main Properties, note that some of these values were taken from Aspen HYSYS
-T0 = 470; % units of K
-P0 = 1010; % units of kPa
+T0 = 500; % units of K
+P0 = 1000; % units of kPa
 D = 0.05; % units of m; diameter of tube
-L =8;  % units of m
+L =10;  % units of m
 N = 1100; % number of tubes
 Ac = (pi*((D^2)/4)); % units of m^2
 phi = 0.4; % represents the void fraction
@@ -44,18 +44,18 @@ V_r = (pi*((D^2)/4))*L; % units of m^3
 
 %Coolant Properties
 U = 0.3; % units of kJ/(m^2*K*s)
-Tc0 =380; % units of K, boiling point is 530 K
-flowC = 2100/3600; % units of kg/s
+Tc0 = 400; % units of K, boiling point is 530 K
+flowC = 1500/3600; % units of kg/s
 
 
 %Initial molar flowrates from starting material balance
  % units of mol/s
-F1_0 = 1300/3600; % 1 = c2h4
-F2_0 = 900/3600; % 2 = hcl
-F3_0 = 1000/3600; % 3 = o2
+F1_0 = 70/3600; % 1 = c2h4
+F2_0 = 180/3600; % 2 = hcl
+F3_0 = 60/3600; % 3 = o2
 F4_0 = 0/3600; % 4 = 1,1,2-trichloroethane
-F5_0 = 200/3600; % 5 = co2
-F6_0 = 0.1/3600; % 6 = cl2
+F5_0 = 0/3600; % 5 = co2
+F6_0 = 0.01/3600; % 6 = cl2
 F7_0 = 0/3600; % 7 = 1,2-dichloroethane
 F8_0 = 1/3600; % 8 = h2o
 F = [F1_0 F2_0 F3_0 F4_0 F5_0 F6_0 F7_0 F8_0];     
@@ -67,7 +67,7 @@ G = sum(MW.*F)/Ac; % units of kg/(m^2 * s)
 Beta = (((G/(Dp)) * ((1-phi)/(phi^3))) * (((150*(1-phi)*mu)/Dp) + (1.75*G)))/1000; % units of kPa*kg/(m^4)
 
 %Logic
-numElements = 1000; % number of solver iterations
+numElements = 100; % number of solver iterations
 dv = V_r/numElements;
 vspan = linspace(0, V_r, numElements);
 y0 = [F1_0 F2_0 F3_0 F4_0 F5_0 F6_0 F7_0 F8_0 T0 P0 Tc0]; % load dependent variables

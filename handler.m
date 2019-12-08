@@ -99,7 +99,8 @@ outvar(10) = -Beta * (1/(Ac*rho)); % units of kPa/m^3
 % Shell side differential equations
 
 outvar(11) = (4 * U * (T - Tc)) / (flowC * Cpc * Do); % units of K/m^3
-
+%reaction needs more heat at the end to sustain, counter current is coldest
+%at the end.
 % if (T<400)
 %      outvar(11) = 0;
 %      Tc = 400;
