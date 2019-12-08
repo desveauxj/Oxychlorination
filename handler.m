@@ -97,7 +97,7 @@ outvar(10) = -Beta * (1/(Ac*rho)); % units of kPa/m^3
 
 
 % Shell side differential equations
-outvar(11) = -(4 * U * (T - Tc)) / (flowC * Cpc * Do); % units of K/m^3
+outvar(11) = (4 * U * (T - Tc)) / (flowC * Cpc * Do); % units of K/m^3
 
 outvar = outvar';
 
