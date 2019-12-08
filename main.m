@@ -1,5 +1,5 @@
 clear
-%clc
+
 %Species indices key:
     % 1 = c2h4
     % 2 = hcl
@@ -67,7 +67,7 @@ G = sum(MW.*F)/Ac; % units of kg/(m^2 * s)
 Beta = (((G/(Dp)) * ((1-phi)/(phi^3))) * (((150*(1-phi)*mu)/Dp) + (1.75*G)))/1000; % units of kPa*kg/(m^4)
 
 %Logic
-numElements = 100; % number of solver iterations
+numElements = 2000; % number of solver iterations
 dv = V_r/numElements;
 vspan = linspace(0, V_r, numElements);
 y0 = [F1_0 F2_0 F3_0 F4_0 F5_0 F6_0 F7_0 F8_0 T0 P0 Tc0]; % load dependent variables
@@ -77,8 +77,10 @@ conv = zeros(numElements,1);
 for i = 1:numElements
     conv(i) = (1-ysoln(i,1)/ysoln(1,1));
 end
-disp(conv(numElements))
-Ntubes = 13.88/ysoln(7)%13.88mol/s is the 1,2-dichloroethane production rate from Aspen simulation 
-%disp('Final Conversion: '+ num2str(conv(numElements)))
-ysoln(100,7)/(ysoln(100,4)+ysoln(100,7))
+
+%Solution
+disp(conv(numElements))%Conversion
+Ntubes = 13.88/ysoln(7) %13.88mol/s is the 1,2-dichloroethane production rate from Aspen simulation 
+ysoln(numElements,7)/(ysoln(numElements,4)+ysoln(numElements,7)) %Selectivity
 plotdata(v, ysoln, conv);
+disp('-----')
